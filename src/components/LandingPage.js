@@ -37,6 +37,7 @@ const LandingPage = () => {
         updateFormData({ token: result.token });
       } catch (error) {
         setError(error.message);
+        navigate('/failure');
       } finally {
         setLoading(false);
       }

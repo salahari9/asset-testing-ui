@@ -5,6 +5,7 @@ import './App.css';
 import AccountFormPage from './components/AccountFormPage';
 import IdentityPage from './components/IdentityPage';
 import LandingPage from './components/LandingPage';
+import Failure from './components/Failure';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="/identityPage" element={<IdentityPage />} />{' '}
           {/* Specify the element */}
           <Route path="/accountForm" element={<AccountFormPage />} />{' '}
+          {/* Specify the element */}
+          <Route path="/failure" element={<Failure />} />{' '}
           {/* Specify the element */}
         </Routes>
       </Router>
