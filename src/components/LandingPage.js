@@ -18,7 +18,7 @@ const LandingPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'http://localhost:80/api/auth/login?userName=test',
+          'http://localhost:30649/api/auth/login?userName=test',
           {
             // Replace with your API URL
             method: 'GET',

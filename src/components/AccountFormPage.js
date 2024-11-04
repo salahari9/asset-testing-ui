@@ -45,7 +45,7 @@ const AccountFormPage = () => {
 
     try {
       //   Make an API call to save the data
-      const response = await fetch('http://localhost:80/api/assets/create', {
+      const response = await fetch('http://localhost:30649/api/assets/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
