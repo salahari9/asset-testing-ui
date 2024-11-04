@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: asset-testing-ui-deployment
+  name: asset-testing-ui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asset-testing-ui-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: asset-testing-ui-deployment
+    spec:
+      containers:
+      - image: alahari9/asset-testing-ui:latest
+        name: asset-testing-ui
+        resources: {}
+status: {}
