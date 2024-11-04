@@ -80,6 +80,7 @@ docker build -t asset-testing-ui .
 ```shell
 #Verify the image from local
 docker run -it -p host_port:container_port asset-testing-ui
+docker run -it -p 3021:3000 asset-testing-ui
 ```
 
 ```shell
