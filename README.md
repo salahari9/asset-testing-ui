@@ -88,21 +88,23 @@ curl http://localhost:host_port
 
 ```shell
 #Create tag and push to docker hub
-docker tag -t asset-testing-ui salahari9/asset-testing-ui
-docker push salahari9/asset-testing-ui
+docker tag asset-testing-ui alahari9/asset-testing-ui:latest
+docker push alahari9/asset-testing-ui:latest
 ```
 
 ```shell
 #create a k8s deployment
 # create a helm/templates directory
 mkdir -p helm/templates
-kubectl create deployment asset-testing-ui-deployment --image salahari9/asset-testing-ui -o yaml --dry-run=client > helm/templates/deployment.yaml
+kubectl create deployment asset-testing-ui-deployment --image alahari9/asset-testing-ui:latest -o yaml --dry-run=client > helm/templates/deployment.yaml
 kubectl apply -f helm/templates/deployment.yaml
 ```
 
 ```shell
 #veify with Nodeport
-kubectl create service nodeport --name=asset-testing-ui-np --type=Nodeport --port=3000 -o yaml --dry-run=client > heml/templates/nodeport.yaml
+
+kubectl expose deployment asset-testing-ui-deployment --type=NodePort --port=3000 -o yaml --dry-run=client > helm/templates/nodeport.yaml
+
 
 #Get the nodeport and verify
 kubectl get svc
