@@ -68,3 +68,46 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Create a docker iamge on local
+Create a Dockerfile, with steps to add the app using node:18 base image
+
+```shell
+docker build -t asset-testing-ui . 
+```
+
+```shell
+#Verify the image from local
+docker run -t host_port:container_port asset-testing-ui 
+```
+
+```shell
+curl http://localhost:host_port
+```
+
+```shell
+#Create tag and push to docker hub
+docker tag -t asset-testing-ui salahari9/asset-testing-ui
+docker push salahari9/asset-testing-ui
+```
+
+```shell
+#create a k8s deployment
+# create a helm/templates directory
+mkdir -p helm/templates
+kubectl create deployment asset-testing-ui-deployment --image salahari9/asset-testing-ui -o yaml --dry-run=client > helm/templates/deployment.yaml
+kubectl apply -f helm/templates/deployment.yaml
+```
+
+```shell
+#veify with Nodeport
+kubectl create service nodeport --name=asset-testing-ui-np --type=Nodeport --port=3000 -o yaml --dry-run=client > heml/templates/nodeport.yaml
+
+#Get the nodeport and verify
+kubectl get svc 
+```
+
+```shell
+curl http://localhost:nodeport
+```
