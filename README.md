@@ -69,17 +69,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 ### Create a docker iamge on local
+
 Create a Dockerfile, with steps to add the app using node:18 base image
 
 ```shell
-docker build -t asset-testing-ui . 
+docker build -t asset-testing-ui .
 ```
 
 ```shell
 #Verify the image from local
-docker run -t host_port:container_port asset-testing-ui 
+docker run -it -p host_port:container_port asset-testing-ui
 ```
 
 ```shell
@@ -105,7 +105,7 @@ kubectl apply -f helm/templates/deployment.yaml
 kubectl create service nodeport --name=asset-testing-ui-np --type=Nodeport --port=3000 -o yaml --dry-run=client > heml/templates/nodeport.yaml
 
 #Get the nodeport and verify
-kubectl get svc 
+kubectl get svc
 ```
 
 ```shell
