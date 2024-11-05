@@ -108,6 +108,7 @@ kubectl expose deployment asset-testing-ui-deployment --type=NodePort --port=300
 
 kubectl expose deployment asset-testing-ui-deployment --type=LoadBalancer --port=3000 -o yaml --dry-run=client > helm/templates/loadbalancer.yaml
 
+kubectl expose deployment asset-testing-ui-deployment --type=LoadBalancer --port=3000 -o yaml > helm/templates/loadbalancer-test.yaml
 
 #Get the nodeport and verify
 kubectl get svc
